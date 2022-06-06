@@ -12,7 +12,7 @@ const localStorageKey = "app_user";
 
 const userVerifyURL = ROOT_URL + "/user";
 
-const profileURL = ROOT_URL + "/profiles";
+const profileURL = ROOT_URL + "profiles";
 
 export {
   ROOT_URL,

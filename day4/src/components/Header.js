@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../context/userContext";
 
 function Header(props) {
   return (
@@ -7,7 +9,13 @@ function Header(props) {
       <div className="container">
         <div className="flex jc-between al-center">
           <h2 className="logo">conduit</h2>
-          <nav>{props.isLoggedIn ? <AuthHeader /> : <NonAuthHeader />}</nav>
+          <nav>
+            {props.isLoggedIn ? (
+              <AuthHeader user={props.user} />
+            ) : (
+              <NonAuthHeader />
+            )}
+          </nav>
         </div>
       </div>
     </header>
@@ -52,7 +60,10 @@ function NonAuthHeader() {
   );
 }
 
-function AuthHeader() {
+function AuthHeader(props) {
+  let userData = useContext(UserContext);
+
+  // let { user } = userData.data;
   return (
     <ul className="flex jc-between al-center">
       <li>
@@ -91,7 +102,7 @@ function AuthHeader() {
           className={(isActive) =>
             "active-nav" + (!isActive ? " unselected" : "")
           }
-          to="/profile"
+          to={`/profiles/${props.user.username}`}
         >
           Profile
         </NavLink>

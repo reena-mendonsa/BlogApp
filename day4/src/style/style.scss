@@ -169,11 +169,25 @@ button {
   background-color: transparent;
   border: 1px solid grey;
   cursor: pointer;
-  color: $secondary;
+  color: #818a91;
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  margin: 0 1rem;
+  margin: 1rem;
   border-radius: 5px;
+}
+.follow-btn {
+  margin: 1rem;
+}
+.usr-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-name {
+  font-size: 1.2rem;
+}
+.edit-btn {
+  text-align: right;
 }
 .taglist {
   border: 1px solid $secondary;

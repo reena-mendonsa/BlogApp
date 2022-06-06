@@ -80,7 +80,7 @@ function AuthenticatedApp(props) {
           <Home {...props} />
         </Route>
         <Route path="/article/:slug">
-          <SingleArticle user={props.user} />
+          <SingleArticle user={props.user} isLoggedIn={props.isLoggedIn} />
         </Route>
         <Route path="/articles/edit/:slug">
           <UpdateArticle user={props.user} />
@@ -88,8 +88,8 @@ function AuthenticatedApp(props) {
         <Route path="/new-post" exact>
           <NewPost user={props.user} />
         </Route>
-        <Route path="/profile" exact>
-          <Profile user={props.user} />
+        <Route path="/profiles/:id" exact>
+          <Profile user={props.user} isLoggedIn={props.isLoggedIn} />
         </Route>
         <Route path="/settings" exact>
           <Settings user={props.user} updateUser={props.updateUser} />
@@ -121,6 +121,7 @@ function UnAuthenticatedApp(props) {
         <Route path="*" exact>
           <NoMatch />
         </Route>
+        .
       </Switch>
     </React.Fragment>
   );

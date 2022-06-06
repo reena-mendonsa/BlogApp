@@ -1,9 +1,11 @@
-import "../loader.scss";
+import "../style/loader.css";
+
 import React from "react";
 
 function Loader() {
   return (
-    <div className="ripple-loader">
+    <div className="bouncing-loader">
+      <div></div>
       <div></div>
       <div></div>
     </div>
