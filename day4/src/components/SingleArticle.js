@@ -87,16 +87,28 @@ class SingleArticle extends React.Component {
                   <p className="date">{article.createdAt}</p>
                 </div>
                 <div>
-                  {this.props.user.username === article.author.username && (
-                    <div className="follow-box">
-                      <button className="btn" onClick={this.handleEdit}>
-                        Edit
-                      </button>
-                      <button className="btn" onClick={this.handleDelete}>
-                        Delete
-                      </button>
-                    </div>
-                  )}
+                  {this.props.isLoggedIn &&
+                    (this.props.user.username === article.author.username ? (
+                      <div className="follow-box">
+                        <button className="btn" onClick={this.handleEdit}>
+                          Edit
+                        </button>
+                        <button className="btn" onClick={this.handleDelete}>
+                          Delete
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="follow-box">
+                        <button className="btn" onClick={this.handleEdit}>
+                          +Follow ${article.author.username}
+                        </button>
+                        <button className="btn" onClick={this.handleDelete}>
+                          <i className={"fa fa-heart fa-xs"}></i>
+                          &nbsp; Favourite Post&nbsp;
+                          <span>{article.favoritesCount}</span>
+                        </button>
+                      </div>
+                    ))}
                 </div>
               </div>
             </div>
@@ -111,7 +123,9 @@ class SingleArticle extends React.Component {
               ))}
             </ul>
             <hr />
-            <CommentBox {...this.props} slug={article.slug} />
+            {this.props.isLoggedIn && (
+              <CommentBox {...this.props} slug={article.slug} />
+            )}
             {this.props.user === null ? (
               <center>
                 <h6 className="flex">
