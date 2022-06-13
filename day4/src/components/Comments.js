@@ -1,6 +1,6 @@
 import Loader from "./Loader";
 import React from "react";
-// import UserContext from "../context/UserContext";
+import UserContext from "../context/UserContext";
 
 function Comments(props) {
   function getDate(date) {
@@ -8,11 +8,11 @@ function Comments(props) {
     return newDate;
   }
 
-  let { comments, loggedInUser, isLoggedIn } = props;
-  //   let user = useContext(UserContext);
-  //   let { comments } = props;
-  //   let { isLoggedIn } = user?.data;
-  //   let loggedInUser = user.data?.user?.username;
+  // let { comments, loggedInUser, isLoggedIn } = props;
+  let user = useContext(UserContext);
+  let { comments } = props;
+  let { isLoggedIn } = user.data;
+  let loggedInUser = user.data.user.username;
   if (!comments) {
     return <Loader />;
   }

@@ -3,13 +3,14 @@ import CommentBox from "./CommentBox";
 import React from "react";
 import { articlesURL, localStorageKey } from "../utils/constant";
 import { Link, withRouter } from "react-router-dom";
+import UserContext from "../context/UserContext";
 
 class SingleArticle extends React.Component {
   state = {
     article: null,
     error: "",
   };
-
+  static contextType = UserContext;
   componentDidMount() {
     let slug = this.props.match.params.slug;
     fetch(articlesURL + "/" + slug)
@@ -73,7 +74,7 @@ class SingleArticle extends React.Component {
     }
 
     let { article } = this.state;
-
+    let { isLoggedIn, user } = this.context.data;
     return (
       <React.Fragment>
         <main>
@@ -87,7 +88,7 @@ class SingleArticle extends React.Component {
                   <p className="date">{article.createdAt}</p>
                 </div>
                 <div>
-                  {this.props.isLoggedIn &&
+                  {isLoggedIn &&
                     (this.props.user.username === article.author.username ? (
                       <div className="follow-box">
                         <button className="btn" onClick={this.handleEdit}>
@@ -123,9 +124,7 @@ class SingleArticle extends React.Component {
               ))}
             </ul>
             <hr />
-            {this.props.isLoggedIn && (
-              <CommentBox {...this.props} slug={article.slug} />
-            )}
+            {isLoggedIn && <CommentBox {...this.props} slug={article.slug} />}
             {this.props.user === null ? (
               <center>
                 <h6 className="flex">

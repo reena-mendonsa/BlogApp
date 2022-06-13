@@ -2,19 +2,20 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../context/userContext";
+import { localStorageKey } from "../utils/constant";
 
 function Header(props) {
+  let userData = useContext(UserContext);
+  let { isLoggedIn } = userData.data;
+  // let {handleLogout} = userData;
+
   return (
     <header>
       <div className="container">
         <div className="flex jc-between al-center">
           <h2 className="logo">conduit</h2>
           <nav>
-            {props.isLoggedIn ? (
-              <AuthHeader user={props.user} />
-            ) : (
-              <NonAuthHeader />
-            )}
+            {isLoggedIn ? <AuthHeader user={props.user} /> : <NonAuthHeader />}
           </nav>
         </div>
       </div>
@@ -61,9 +62,9 @@ function NonAuthHeader() {
 }
 
 function AuthHeader(props) {
-  // let userData = useContext(UserContext);
+  let userData = useContext(UserContext);
 
-  // let { user } = userData.data;
+  let { user } = userData.data;
   return (
     <ul className="flex jc-between al-center">
       <li>
@@ -102,7 +103,7 @@ function AuthHeader(props) {
           className={(isActive) =>
             "active-nav" + (!isActive ? " unselected" : "")
           }
-          to={`/profiles/${props.user.username}`}
+          to={`/profiles/${user.username}`}
         >
           Profile
         </NavLink>

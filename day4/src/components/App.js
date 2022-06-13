@@ -13,7 +13,7 @@ import { Route, Switch } from "react-router-dom";
 import { localStorageKey, userVerifyURL } from "../utils/constant";
 import React from "react";
 import ErrorBoundary from "./ErrorBoundary";
-
+import { UserProvider } from "./context/UserContext";
 class App extends React.Component {
   state = {
     isLoggedIn: false,
@@ -56,20 +56,28 @@ class App extends React.Component {
     }
     return (
       <React.Fragment>
-        <ErrorBoundary>
-          <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
-          {this.state.isLoggedIn ? (
-            <AuthenticatedApp
-              isLoggedIn={this.state.isLoggedIn}
-              user={this.state.user}
-            />
-          ) : (
-            <UnAuthenticatedApp
-              updateUser={this.updateUser}
-              user={this.state.user}
-            />
-          )}
-        </ErrorBoundary>
+        <UserProvider
+          value={{
+            data: this.state,
+            handleUser: this.updateUser,
+            handleLogout: this.handleLogout,
+          }}
+        >
+          <ErrorBoundary>
+            <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
+            {this.state.isLoggedIn ? (
+              <AuthenticatedApp
+                isLoggedIn={this.state.isLoggedIn}
+                user={this.state.user}
+              />
+            ) : (
+              <UnAuthenticatedApp
+                updateUser={this.updateUser}
+                user={this.state.user}
+              />
+            )}
+          </ErrorBoundary>
+        </UserProvider>
       </React.Fragment>
     );
   }

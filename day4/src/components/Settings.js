@@ -1,6 +1,7 @@
 import React from "react";
 import { userVerifyURL } from "../utils/constant";
 import { withRouter } from "react-router";
+import UserContext from "../context/UserContext";
 
 class Settings extends React.Component {
   state = {
@@ -10,6 +11,7 @@ class Settings extends React.Component {
     email: "",
     password: "",
   };
+  static contextType = UserContext;
   handleSubmit = (event) => {
     fetch(userVerifyURL, {
       method: "GET",

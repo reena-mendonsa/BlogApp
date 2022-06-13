@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import validate from "../utils/validate";
 import { loginURL } from "../utils/constant";
 import { withRouter } from "react-router";
+import UserContext from "../context/UserContext";
 
 class Login extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class Login extends React.Component {
       },
     };
   }
+  static contextType = UserContext;
 
   handleChange = (event) => {
     let { name, value } = event.target;

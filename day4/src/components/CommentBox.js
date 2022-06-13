@@ -1,7 +1,7 @@
 import React from "react";
 import { articlesURL, localStorageKey } from "../utils/constant";
 import Comments from "./Comments";
-// import UserContext from "../context/UserContext";
+import UserContext from "../context/UserContext";
 
 class CommentBox extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class CommentBox extends React.Component {
       comments: "",
     };
   }
-  //   static contextType = UserContext;
+  static contextType = UserContext;
   componentDidMount() {
     this.getComments();
   }
@@ -91,12 +91,10 @@ class CommentBox extends React.Component {
 
   render() {
     let { inputText, comments } = this.state;
-    let loggedInUser = this.props.user.username;
-    // let loggedInUser = "temp";
-    // let loggedInUser = this.context.data?.user?.username;
-    // console.log(loggedInUser, "user");
-    // console.log(this.context.data.user);
-    // let {isLoggedIn} = this.context.data;
+    // let loggedInUser = this.props.user.username;
+
+    let loggedInUser = this.context.data.user.username;
+
     return (
       <React.Fragment>
         {loggedInUser && (

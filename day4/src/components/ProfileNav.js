@@ -3,6 +3,7 @@ import ProfileBanner from "./ProfileBanner";
 import Articles from "./Articles";
 import { articlesURL, localStorageKey } from "../utils/constant";
 import Pagination from "./Pagination";
+import UserContext from "../context/UserContext";
 
 class ProfileNav extends React.Component {
   state = {
@@ -37,7 +38,7 @@ class ProfileNav extends React.Component {
         this.setState({ error: "Not able to fetch articles!" });
       });
   };
-
+  static contextType = UserContext;
   componentDidMount() {
     this.fetchData();
   }
@@ -52,9 +53,10 @@ class ProfileNav extends React.Component {
     const { activeTab } = this.state;
 
     const { user } = this.props;
+    let loggedInUser = this.context.data.user.username;
     return (
       <section>
-        <ProfileBanner user={user} />
+        <ProfileBanner user={loggedInUser} />
         <div className="container">
           <div className="article-heading">
             <div className="flex">
