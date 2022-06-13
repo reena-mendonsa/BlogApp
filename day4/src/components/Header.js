@@ -61,7 +61,7 @@ function NonAuthHeader() {
 }
 
 function AuthHeader(props) {
-  let userData = useContext(UserContext);
+  // let userData = useContext(UserContext);
 
   // let { user } = userData.data;
   return (

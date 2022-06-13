@@ -1,6 +1,6 @@
 import React from "react";
 import Loader from "./Loader";
-// import { FontAwesomeIcon, i } from "@fortawesome/react-fontawesome";
+
 import { Link } from "react-router-dom";
 
 function Articles(props) {

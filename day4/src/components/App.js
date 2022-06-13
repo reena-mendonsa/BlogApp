@@ -12,6 +12,7 @@ import UpdateArticle from "./UpdateArticle";
 import { Route, Switch } from "react-router-dom";
 import { localStorageKey, userVerifyURL } from "../utils/constant";
 import React from "react";
+import ErrorBoundary from "./ErrorBoundary";
 
 class App extends React.Component {
   state = {
@@ -55,18 +56,20 @@ class App extends React.Component {
     }
     return (
       <React.Fragment>
-        <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
-        {this.state.isLoggedIn ? (
-          <AuthenticatedApp
-            isLoggedIn={this.state.isLoggedIn}
-            user={this.state.user}
-          />
-        ) : (
-          <UnAuthenticatedApp
-            updateUser={this.updateUser}
-            user={this.state.user}
-          />
-        )}
+        <ErrorBoundary>
+          <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
+          {this.state.isLoggedIn ? (
+            <AuthenticatedApp
+              isLoggedIn={this.state.isLoggedIn}
+              user={this.state.user}
+            />
+          ) : (
+            <UnAuthenticatedApp
+              updateUser={this.updateUser}
+              user={this.state.user}
+            />
+          )}
+        </ErrorBoundary>
       </React.Fragment>
     );
   }
