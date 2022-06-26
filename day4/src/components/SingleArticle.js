@@ -74,7 +74,7 @@ class SingleArticle extends React.Component {
     }
 
     let { article } = this.state;
-    let { isLoggedIn, user } = this.context.data;
+    let { isLoggedIn } = this.context.data;
     return (
       <React.Fragment>
         <main>
@@ -101,7 +101,7 @@ class SingleArticle extends React.Component {
                     ) : (
                       <div className="follow-box">
                         <button className="btn" onClick={this.handleEdit}>
-                          +Follow ${article.author.username}
+                          +Follow {article.author.username}
                         </button>
                         <button className="btn" onClick={this.handleDelete}>
                           <i className={"fa fa-heart fa-xs"}></i>

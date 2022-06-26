@@ -13,7 +13,7 @@ import { Route, Switch } from "react-router-dom";
 import { localStorageKey, userVerifyURL } from "../utils/constant";
 import React from "react";
 import ErrorBoundary from "./ErrorBoundary";
-import { UserProvider } from "./context/UserContext";
+import { UserProvider } from "../context/UserContext";
 class App extends React.Component {
   state = {
     isLoggedIn: false,

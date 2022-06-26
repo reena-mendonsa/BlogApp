@@ -1,8 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import UserContext from "../context/userContext";
-import { localStorageKey } from "../utils/constant";
+import UserContext from "../context/UserContext";
 
 function Header(props) {
   let userData = useContext(UserContext);

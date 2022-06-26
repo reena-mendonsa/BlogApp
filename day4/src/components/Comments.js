@@ -8,11 +8,12 @@ function Comments(props) {
     return newDate;
   }
 
-  // let { comments, loggedInUser, isLoggedIn } = props;
-  let user = useContext(UserContext);
-  let { comments } = props;
-  let { isLoggedIn } = user.data;
-  let loggedInUser = user.data.user.username;
+  let { comments, loggedInUser, isLoggedIn } = props;
+  // let user = UserContext;
+  // let { comments } = props;
+  // console.log(user, "userrrrr");
+  // let { isLoggedIn } = user.data.isLoggedIn;
+  // let loggedInUser = user.data.user.username;
   if (!comments) {
     return <Loader />;
   }

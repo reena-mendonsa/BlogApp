@@ -1,13 +1,12 @@
 import React from "react";
 import Loader from "./Loader";
-import UserContext from "../context/UserContext";
+
 import { Link } from "react-router-dom";
 
 function Articles(props) {
-  const contextType = UserContext;
   const { articles, error } = props;
-  let { isLoggedIn } = this.context.data;
-  console.log(isLoggedIn);
+
+  let { isLoggedIn } = props.isLoggedIn;
 
   if (error) {
     return <p>{error}</p>;
