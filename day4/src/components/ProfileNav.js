@@ -54,6 +54,7 @@ class ProfileNav extends React.Component {
 
     const { user } = this.props;
     let loggedInUser = this.context.data.user.username;
+
     return (
       <section>
         <ProfileBanner user={loggedInUser} />
@@ -74,7 +75,10 @@ class ProfileNav extends React.Component {
               </button>
             </div>
             <hr />
-            <Articles articles={this.state.articles} />
+            <Articles
+              articles={this.state.articles}
+              isLoggedIn={this.props.isLoggedIn}
+            />
             <Pagination />
           </div>
         </div>
