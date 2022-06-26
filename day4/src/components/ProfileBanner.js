@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function ProfileBanner(props) {
   let { image, username } = props.user;
+
   return (
     <section className="profile-hero padding">
       <div className="container ">

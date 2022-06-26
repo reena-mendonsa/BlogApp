@@ -53,11 +53,12 @@ class ProfileNav extends React.Component {
     const { activeTab } = this.state;
 
     const { user } = this.props;
+    console.log(user, "ProfileNav");
     let loggedInUser = this.context.data.user.username;
 
     return (
       <section>
-        <ProfileBanner user={loggedInUser} />
+        <ProfileBanner user={user} />
         <div className="container">
           <div className="article-heading">
             <div className="flex">
