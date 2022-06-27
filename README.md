@@ -17,10 +17,29 @@ For information regarding the API endpoints go through the link below. You will 
 
 [API Endpoints Specs](https://gist.github.com/nnnkit/88db374b4ce62587a86bb32dd0b36ccb)
 
-Available Scripts
-In the project directory, you can run:
 
-npm start
+## Installation
+
+Use the package manager npx create-react-app to install.
+
+### 1.Github Battler requires the following dependencies:
+     i. Nodejs 
+     ii. NPM 
+ 2. Clone this repo
+ 3. Run **_npm install_**, this wil download dependencies.
+ 4. Run ***npm run start*** to run the server in development mode.
+
+
+
+
+## Usage
+
+```python
+npm run start
+
+```
+
+
 
 
 Runs the app in the development mode.
@@ -28,3 +47,6 @@ Open http://localhost:3000 to view it in your browser.
 
 The page will reload when you make changes.
 You may also see any lint errors in the console.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
