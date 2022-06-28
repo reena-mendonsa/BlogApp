@@ -1,6 +1,6 @@
 import Loader from "./Loader";
 import React from "react";
-import UserContext from "../context/UserContext";
+// import UserContext from "../context/UserContext";
 
 function Comments(props) {
   function getDate(date) {
