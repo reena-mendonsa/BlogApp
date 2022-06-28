@@ -54,7 +54,7 @@ class ProfileNav extends React.Component {
 
     const { user } = this.props;
     console.log(user, "ProfileNav");
-    let loggedInUser = this.context.data.user.username;
+//     let loggedInUser = this.context.data.user.username;
 
     return (
       <section>
