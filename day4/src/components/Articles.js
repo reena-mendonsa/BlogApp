@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Articles(props) {
   const { articles, error } = props;
 
-  let { isLoggedIn } = props.isLoggedIn;
+  let isLoggedIn = props.isLoggedIn;
 
   if (error) {
     return <p>{error}</p>;
